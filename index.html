@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario Escolar</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4caf50">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(() => {
+        console.log("✅ Service Worker registrado");
+      }).catch(err => {
+        console.error("❌ Error registrando Service Worker:", err);
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <div id="login-panel">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="clave" placeholder="Contraseña">
+    <button onclick="iniciarSesion()">Ingresar</button>
+  </div>   
+
+  <div id="app" style="display:none;">
+    <h1>📚 Inventario Escolar</h1>
+
+    <!-- Navegación -->
+    <div class="tabs">
+      <button onclick="mostrarTab('formulario')">Formulario</button>
+      <button onclick="mostrarTab('lista')">Inventario</button>
+      <button onclick="mostrarTab('estadisticas')">Estadísticas</button>
+      <button onclick="mostrarTab('historial')">Historial</button>
+    </div>
+
+    <!-- Formulario -->
+    <div id="formulario" class="tab">
+      <input type="text" id="origen" placeholder="Origen">
+      <input type="text" id="serie" placeholder="Número de Serie">
+      <input type="date" id="fecha">
+      <input type="text" id="factura" placeholder="No. Factura">
+      <input type="number" id="costo" placeholder="Costo">
+      <input type="text" id="inventario" placeholder="No. Inventario">
+      <select id="seccion">
+        <option value="Aulas">Aulas</option>
+        <option value="Oficina">Oficina</option>
+        <option value="Laboratorio">Laboratorio</option>
+        <option value="Biblioteca">Biblioteca</option>
+      </select>
+      <input type="file" id="imagen">
+      <button onclick="agregarRegistro()">+ Agregar</button>
+    </div>
+
+    <!-- Lista -->
+    <div id="lista" class="tab" style="display:none;">
+      <input type="text" id="buscar" placeholder="Buscar..." oninput="filtrarRegistros()">
+      <ul id="lista-registros"></ul>
+      <button onclick="exportarJSON()">💾 Exportar</button>
+      <input type="file" onchange="importarJSON(event)">
+      <button onclick="exportarPDF()">📄 Exportar PDF</button>
+    </div>
+
+    <!-- Estadísticas -->
+    <div id="estadisticas" class="tab" style="display:none;">
+      <div id="estadisticas-contenido"></div>
+    </div>
+
+    <!-- Historial -->
+    <div id="historial" class="tab" style="display:none;">
+      <ul id="lista-historial"></ul>
+    </div>
+
+    <button onclick="cerrarSesion()">🔒 Cerrar sesión</button>
+    <button onclick="cambiarTema()">🌓 Tema</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

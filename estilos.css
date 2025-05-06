@@ -1,0 +1,70 @@
+body {
+  font-family: sans-serif;
+  background: #fff;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+input, select, button {
+  margin: 8px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  box-sizing: border-box;
+  transition: background 0.3s, color 0.3s;
+}
+
+button {
+  background: #388e3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.tabs button {
+  background: #4caf50;
+  margin: 5px;
+}
+
+.tabs button.active {
+  background: #2e7d32;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: left;
+}
+
+li {
+  background: #e8f5e9;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 5px solid #4caf50;
+}
+
+img.preview {
+  max-height: 50px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark input,
+body.dark select,
+body.dark button {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+}
